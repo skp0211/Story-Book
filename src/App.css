@@ -1,0 +1,58 @@
+import React, { useState } from "react";
+<div className="p-6 bg-gray-100">Hello</div>
+
+const App = () => {
+  const [people] = useState([
+    { id: 1, name: "Alice", age: 24 },
+    { id: 2, name: "Bob", age: 30 },
+    { id: 3, name: "Charlie", age: 28 },
+  ]);
+
+  return (
+    <div className="space-y-6">
+      {/* Input Card */}
+      <div className="card text-left">
+        <label className="block text-sm font-medium text-gray-700">
+          Username
+        </label>
+        <input type="text" placeholder="Enter username" className="mt-1" />
+        <p className="mt-2 text-sm text-gray-500">
+          This is a helper text.
+        </p>
+      </div>
+
+      {/* Data Table */}
+      <div className="card overflow-x-auto">
+        <table className="min-w-full text-sm text-left border-collapse">
+          <thead>
+            <tr className="bg-indigo-600 text-white">
+              <th className="px-4 py-2">
+                <input type="checkbox" />
+              </th>
+              <th className="px-4 py-2 font-semibold">ID</th>
+              <th className="px-4 py-2 font-semibold">Name</th>
+              <th className="px-4 py-2 font-semibold">Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            {people.map((p, idx) => (
+              <tr
+                key={p.id}
+                className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
+              >
+                <td className="px-4 py-2">
+                  <input type="checkbox" />
+                </td>
+                <td className="px-4 py-2">{p.id}</td>
+                <td className="px-4 py-2">{p.name}</td>
+                <td className="px-4 py-2">{p.age}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default App;
